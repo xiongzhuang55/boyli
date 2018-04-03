@@ -1,6 +1,5 @@
 import vue from 'vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import 'babel-polyfill'
 
 let instance = axios.create({
