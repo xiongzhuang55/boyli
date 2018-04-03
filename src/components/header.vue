@@ -1,8 +1,8 @@
 <template>
     <div class="nav-header backgroundColor">
-      <div class="nav-left">返回</div>
-      <div class="title">主症-疾病</div>
-      <div v-show="navShow" class="nav-right">继续</div>
+      <div v-show="headerData.navLeftButton" class="nav-left" @click="headerData.navLeftButtonFn">返回</div>
+      <div class="nav-title">{{headerData.navTitle}}</div>
+      <div v-show="headerData.navRightButton" class="nav-right">继续</div>
     </div>
 </template>
 
@@ -10,8 +10,11 @@
 export default {
   data () {
     return {
-      "navShow": false
+
     }
+  },
+  props: {
+    "headerData": ''
   }
 }
 </script>
@@ -21,20 +24,34 @@ export default {
 .nav-header
   width 100%
   height 44px
-  display flex
-  align-items center
-  text-align center
+  background-color #2CA2B4
   .nav-left
+    position absolute
+    top 0px
+    left 0
+    width 20%
+    height 44px
     background:url('../assets/images/back_arrow@2x.png') no-repeat left
     background-size 10px 12px
     padding-left 12px
     margin-left 10px
     font-size 14px
+    line-height 44px
     cursor pointer
-  .title
-    flex 1
-    width 80%
+  .nav-title
+    width 60%
+    margin-left 20%
+    line-height 44px
+    font-size 16px
+    text-align center
   .nav-right
+    position absolute
+    top 0px
+    right 0
+    width 20%
+    height 44px
+    text-align right
+    line-height 44px
     background:url('../assets/images/next_arrow@2x.png') no-repeat right
     background-size 10px 12px
     padding-right 12px

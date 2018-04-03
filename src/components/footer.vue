@@ -2,13 +2,13 @@
     <div class="tab">
       <div class="tab-item" @click="HOME">
         <router-link :to="{path:'/home'}">
-          <img :src="home" alt="">
+          <img :src="home" alt="" width="27" height="25">
           <p>首页</p>
         </router-link>
       </div>
       <div class="tab-item" @click="HIS">
         <router-link :to="{path:'/history'}">
-          <img :src="his" alt="">
+          <img :src="his" alt="" width="25">
           <p>记录</p>
         </router-link>
       </div>
@@ -51,8 +51,8 @@ export default{
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .tab
     position absolute
-    left 0px
-    right 0px
+    left 1px
+    right 1px
     bottom 0px
     display flex
     justify-content space-around
@@ -60,14 +60,12 @@ export default{
     border-top 1px solid #ccc
     height 54px
     font-size 14px
+    background-color #fff
     .tab-item
       flex 1
       height 100%
       text-align center
       padding-top 5px
-      img
-        width 27px
-        height 25px
       & > a
         display block
         &.router-link-active

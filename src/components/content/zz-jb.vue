@@ -10,7 +10,7 @@
             <span @click="ill">从疾病进入</span>
           </div>
         </div>
-        <zz-search :searchData="searchData"></zz-search>
+        <zz-search :searchData="searchData" :place="place"></zz-search>
       </div>
     </div>
 </template>
@@ -21,8 +21,19 @@
   export default {
     data () {
       return {
-        "HOST": this.HOST.data(),
-        "searchData": "sym"
+        "host": this.HOST.data(),
+        "place": '',
+        "searchData": '',
+        "symAllData": {
+          "data":'',
+          "Twelve":'',
+          "HfWords":''
+        },
+        "illAllData": {
+          "data":'',
+          "Twelve":'',
+          "HfWords":''
+        }
       }
     },
     components: {
@@ -30,19 +41,48 @@
       "zz-search": zzSearch
     },
     created () {
-      console.log(this.HOST);
-      this.$http.post(this.HOST+'SymTwelve',{sex:1,b:2}).then(function(res){
-        alert(res.body);
+      this.$http.post(this.host+'bodysym',{sex:"female"}).then(function(res){
+        this.symAllData.data = res.body;
       },function(){
         alert('请求失败处理');   //失败处理
       });
+      this.$http.post(this.host+'disease',{sex:"female"}).then(function(res){
+        this.illAllData.data = res.body.diseases;
+      },function(){
+        alert('请求失败处理');   //失败处理
+      });
+      this.$http.post(this.host+'SymTwelve',{sex:"female"}).then(function(res){
+        this.symAllData.Twelve = res.body;
+      },function(){
+        alert('请求失败处理');   //失败处理
+      });
+//      this.$http.post(this.host+'SymHfWords',{sex:"female"}).then(function(res){
+//        this.symAllData.SymHfWords = res.body;
+//      },function(){
+//        alert('请求失败处理');   //失败处理
+//      });
+      this.$http.post(this.host+'IllTwelve',{sex:"female"}).then(function(res){
+        this.illAllData.Twelve = res.body;
+      },function(){
+        alert('请求失败处理');   //失败处理
+      });
+//      this.$http.post(this.host+'IllHfWords',{sex:"female"}).then(function(res){
+//        this.illAllData.IllHfWords = res.body;
+//      },function(){
+//        alert('请求失败处理');   //失败处理
+//      });
+    },
+    mounted () {
+      this.sym()
     },
     methods: {
       sym () {
-        this.searchData = "sym"
+        this.place = '请输入【主症】的首拼或中文'
+        this.searchData = this.symAllData
       },
       ill () {
-        this.searchData = "ill"
+        this.place = '请输入【疾病】的首拼或中文'
+        this.searchData = this.illAllData
       }
     }
   }

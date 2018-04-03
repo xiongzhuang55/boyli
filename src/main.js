@@ -8,8 +8,8 @@ import vueResource from 'vue-resource'
 import router from './router'
 import Host from './common/js/host'
 
-Vue.use('vueResource');
-Vue.use('Vuex');
+Vue.use(vueResource);
+Vue.use(Vuex);
 Vue.config.productionTip = false;
 Vue.prototype.HOST = Host;
 

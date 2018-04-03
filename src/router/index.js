@@ -5,8 +5,6 @@ import CheckSex from '@/components/checkSex'
 import Home from '@/components/home'
 import ZZJB from '@/components/content/zz-jb'
 import History from '@/components/content/history'
-import zzSearch from '@/components/content/zz-search'
-import jbSearch from '@/components/content/jb-search'
 
 Vue.use(Router)
 
