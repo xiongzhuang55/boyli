@@ -2,7 +2,7 @@
   <div id="app">
     <transition
       mode="out-in"
-      :duration="{enter: 100, leave: 100}"
+      :duration="{enter: 100, leave: 10}"
       :enter-active-class="enterActiveClass"
       :leave-active-class="leaveActiveClass"
     >
