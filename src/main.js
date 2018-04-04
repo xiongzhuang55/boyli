@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import API from '../config/httpUrl'
 import {fetch, post} from './axios'
+import 'lib-flexible'
 
 Vue.config.productionTip = false;
 Vue.prototype.API = API;
