@@ -37,6 +37,8 @@
   width 100%
   text-align center
   box-sizing border-box
+  h2
+    font-size 32px
   .sex-select
     display flex
     justify-content space-around
@@ -45,8 +47,11 @@
     a
       width 30%
       color #2AB2FF
-    img
-      width 80%
+      img
+        width 80%
+      p
+        font-size 24px
+
 
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

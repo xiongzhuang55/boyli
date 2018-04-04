@@ -103,7 +103,7 @@ export default {
   .zz-jb {
     .zz-header {
       position: relative;
-      height: 44px;
+      height: 60px;
 
       .zz-back {
         position: absolute;
@@ -111,11 +111,11 @@ export default {
         left: 0px;
         bottom: 0;
         width: 20%;
-        line-height: 44px;
+        line-height: 60px;
         background: url('../../assets/images/back_arrow@2x.png') no-repeat left;
-        background-size: 10px 12px;
-        margin-left: 12px;
-        text-indent: 10px;
+        background-size: 12px 14px;
+        margin-left: 14px;
+        text-indent: 12px;
 
         a {
           color: #fff;
@@ -134,7 +134,7 @@ export default {
       border-radius: 5px;
 
       span {
-        line-height: 30px;
+        line-height: 45px;
         flex: 1;
         cursor: pointer;
         color: #fff;

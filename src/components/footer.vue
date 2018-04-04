@@ -8,7 +8,7 @@
       </div>
       <div class="tab-item" @click="HIS">
         <router-link :to="{path:'/history'}">
-          <img :src="his" alt="" width="25">
+          <img :src="his" alt="" width="23" height="25">
           <p>记录</p>
         </router-link>
       </div>
@@ -58,16 +58,14 @@ export default{
     justify-content space-around
     align-items center
     border-top 1px solid #ccc
-    height 54px
+    height 70px
     font-size 14px
     background-color #fff
     .tab-item
-      flex 1
-      height 100%
       text-align center
-      padding-top 5px
       & > a
         display block
+        line-height 20px
         &.router-link-active
           color #2CA2B4 !important
 </style>

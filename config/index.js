@@ -23,10 +23,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/baseUrl': {
-        target: 'http://202.104.149.151:8099', //接口域名
+        target: 'http://202.104.149.151:8221', //接口域名
         changeOrigin: true, //是否跨域
         pathRewrite: {
-          '^/baseUrl': 'http://202.104.149.151:8099' //需要rewrite重写
+          '^/baseUrl': 'http://202.104.149.151:8221' //需要rewrite重写
         }
       }
     },
