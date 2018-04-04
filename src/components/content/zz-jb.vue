@@ -21,7 +21,6 @@
   export default {
     data () {
       return {
-        "host": this.HOST.data(),
         "place": '',
         "searchData": '',
         "symAllData": {
@@ -41,32 +40,32 @@
       "zz-search": zzSearch
     },
     created () {
-      this.$http.post(this.host+'bodysym',{sex:"female"}).then(function(res){
+      this.$post(this.API.bodysym,{sex:"female"}).then(function(res){
         this.symAllData.data = res.body;
       },function(){
         alert('请求失败处理');   //失败处理
       });
-      this.$http.post(this.host+'disease',{sex:"female"}).then(function(res){
+      this.$post(this.API.disease,{sex:"female"}).then(function(res){
         this.illAllData.data = res.body.diseases;
       },function(){
         alert('请求失败处理');   //失败处理
       });
-      this.$http.post(this.host+'SymTwelve',{sex:"female"}).then(function(res){
+      this.$post(this.API.SymTwelve,{sex:"female"}).then(function(res){
         this.symAllData.Twelve = res.body;
       },function(){
         alert('请求失败处理');   //失败处理
       });
-//      this.$http.post(this.host+'SymHfWords',{sex:"female"}).then(function(res){
+//      this.$post(this.API.SymHfWords,{sex:"female"}).then(function(res){
 //        this.symAllData.SymHfWords = res.body;
 //      },function(){
 //        alert('请求失败处理');   //失败处理
 //      });
-      this.$http.post(this.host+'IllTwelve',{sex:"female"}).then(function(res){
+      this.$post(this.API.IllTwelve,{sex:"female"}).then(function(res){
         this.illAllData.Twelve = res.body;
       },function(){
         alert('请求失败处理');   //失败处理
       });
-//      this.$http.post(this.host+'IllHfWords',{sex:"female"}).then(function(res){
+//      this.$post(this.API.IllHfWords,{sex:"female"}).then(function(res){
 //        this.illAllData.IllHfWords = res.body;
 //      },function(){
 //        alert('请求失败处理');   //失败处理

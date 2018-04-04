@@ -57,7 +57,7 @@ export default {
     }
   },
   created () {
-    this.$http.post(this.host+'gethistorybydate',{"usertype":"患者用户"}).then(function(res){
+    this.$post(this.API.gethistorybydate,{"usertype":"患者用户"}).then(function(res){
       this.hisData = res.body;
     },function(){
       alert('请求失败处理');   //失败处理
