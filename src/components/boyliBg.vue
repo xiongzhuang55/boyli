@@ -63,7 +63,9 @@ export default {
   overflow: hidden;
 
   .boyli-bg {
+    width: 100%;
     height: 100%;
+    display: block;
   }
 
   .boyli-enter {
@@ -71,11 +73,10 @@ export default {
     bottom: 20px;
     left: 0px;
     right: 0px;
-    height: 72px;
 
     img {
-      width: 140px;
-      height: 79px;
+      width: 270px;
+      height: 150px;
     }
   }
 }
