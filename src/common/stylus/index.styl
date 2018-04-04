@@ -5,6 +5,17 @@
 a
   text-decoration none
   color #000
+ol
+ul
+  list-style none
+input
+textarea
+  box-shadow none
+  outline none
+  &:acitve
+  &:focus
+    appearance none
+    border 1px solid #ccc
 #app
   position absolute
   top 0
@@ -29,3 +40,23 @@ a
 .backgroundColor
   background-color #2CA2B4
   color #fff
+.app-content
+  position absolute
+  top 44px
+  left 1px
+  bottom 55px
+  right 1px
+  background-color #f2f2f2
+  overflow-y scroll
+  ol
+  ul
+    background-color #fff
+    li
+      border-top 1px solid #ccc
+      a
+        display block
+        line-height 3rem
+        background-color #fff
+        &:hover
+          background-color #86CBD6
+          color #fff
