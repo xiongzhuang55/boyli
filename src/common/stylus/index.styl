@@ -1,4 +1,7 @@
+
 @import "mixi.styl"
+@import 'reset.styl'
+  reset()
 *
   margin 0
   padding 0
@@ -22,11 +25,11 @@ textarea
   left 0
   right 0
   bottom 0
-  width 500px
+  width 694px
   font-family '微软雅黑'
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  font-size 16px
+  font-size 20px /*no*/
   margin 0% auto
   overflow hidden
 @media screen and (max-width 768px)
@@ -42,9 +45,9 @@ textarea
   color #fff
 .app-content
   position absolute
-  top 44px
+  top 60px
   left 1px
-  bottom 55px
+  bottom 70px
   right 1px
   background-color #f2f2f2
   overflow-y scroll
@@ -52,10 +55,10 @@ textarea
   ul
     background-color #fff
     li
-      border-top 1px solid #ccc
+      border-top 2px solid #ccc
       a
         display block
-        line-height 3rem
+        line-height 60px
         background-color #fff
         &:hover
           background-color #86CBD6

@@ -22,7 +22,7 @@
     data () {
       return {
         "place": '',
-        "searchData": '',
+        "searchData": {},
         "symAllData": {
           "data":'',
           "Twelve":'',
@@ -40,35 +40,37 @@
       "zz-search": zzSearch
     },
     created () {
-      this.$post(this.API.bodysym,{sex:"female"}).then(function(res){
-        this.symAllData.data = res.body;
-      },function(){
-        alert('请求失败处理');   //失败处理
+      this.$post(this.API.bodysym,{sex:"female"}).then(data => {
+        this.symAllData.data = data
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-      this.$post(this.API.disease,{sex:"female"}).then(function(res){
-        this.illAllData.data = res.body.diseases;
-      },function(){
-        alert('请求失败处理');   //失败处理
+      this.$post(this.API.disease,{sex:"female"}).then(data =>{
+        this.illAllData.data = data.diseases;
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-      this.$post(this.API.SymTwelve,{sex:"female"}).then(function(res){
-        this.symAllData.Twelve = res.body;
-      },function(){
-        alert('请求失败处理');   //失败处理
+      this.$post(this.API.SymTwelve,{sex:"female"}).then(data =>{
+        this.symAllData.Twelve = data;
+      }).catch(function(error) {
+        console.log(error);
       });
-//      this.$post(this.API.SymHfWords,{sex:"female"}).then(function(res){
-//        this.symAllData.SymHfWords = res.body;
-//      },function(){
-//        alert('请求失败处理');   //失败处理
+//      this.$post(this.API.SymHfWords,{sex:"female"}).then(data =>{
+//          this.symAllData.SymHfWords = data;
+//        }).catch(function(error) {
+//        console.log(error);
 //      });
-      this.$post(this.API.IllTwelve,{sex:"female"}).then(function(res){
-        this.illAllData.Twelve = res.body;
-      },function(){
-        alert('请求失败处理');   //失败处理
+      this.$post(this.API.IllTwelve,{sex:"female"}).then(data =>{
+        this.illAllData.Twelve = data;
+      }).catch(function(error) {
+        console.log(error);
       });
-//      this.$post(this.API.IllHfWords,{sex:"female"}).then(function(res){
-//        this.illAllData.IllHfWords = res.body;
-//      },function(){
-//        alert('请求失败处理');   //失败处理
+//      this.$post(this.API.IllHfWords,{sex:"female"}).then(data =>{
+//          this.illAllData.IllHfWords = data;
+//        }).catch(function(error) {
+//        console.log(error);
 //      });
     },
     mounted () {
@@ -98,18 +100,18 @@
     .zz-jb
       .zz-header
         position relative
-        height 44px
+        height 60px
         .zz-back
           position absolute
           top 0
           left 0px
           bottom 0
           width 20%
-          line-height 44px
+          line-height 60px
           background url('../../assets/images/back_arrow@2x.png') no-repeat left
-          background-size 10px 12px
-          margin-left 12px
-          text-indent 10px
+          background-size 12px 14px
+          margin-left 14px
+          text-indent 12px
           a
             color #fff
       .select-zz
@@ -122,7 +124,7 @@
         border 1px solid #fff
         border-radius 5px
         span
-          line-height 30px
+          line-height 45px
           flex 1
           cursor pointer
           color #fff

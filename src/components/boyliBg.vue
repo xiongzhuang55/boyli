@@ -71,11 +71,11 @@ export default {
     bottom: 20px;
     left: 0px;
     right: 0px;
-    height: 72px;
+    height: 100px;
 
     img {
-      width: 140px;
-      height: 79px;
+      width: 193px;
+      height: 109px;
     }
   }
 }
