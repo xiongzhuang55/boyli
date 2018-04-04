@@ -10,7 +10,7 @@
             <span @click="ill">从疾病进入</span>
           </div>
         </div>
-        <zz-search :searchData="symAllData.data" :place="place"></zz-search>
+        <zz-search :searchData="bodysym" :symAllData="symAllData" :illAllData="illAllData"></zz-search>
       </div>
     </div>
 </template>
@@ -21,18 +21,19 @@ import zzSearch from "../../components/content/zz-search.vue";
 export default {
   data() {
     return {
+      sex: "male",
       place: "",
       searchData: {},
+      bodysym: [],
       symAllData: {
-        data: [],
-        Twelve: "",
-        HfWords: ""
+        Twelve: {},
+        HfWords: {}
       },
       illAllData: {
-        data: [],
-        Twelve: "",
-        HfWords: ""
-      }
+        Twelve: {},
+        HfWords: {}
+      },
+      disease: []
     };
   },
   components: {
@@ -41,42 +42,60 @@ export default {
   },
   created() {
     const _this = this;
-    _this.$post(_this.API.bodysym, { sex: "female" }).then(
+    const params = { sex: _this.sex };
+    _this.$post(_this.API.bodysym, params).then(
       res => {
-        _this.symAllData.data = res;
+        _this.bodysym = res;
       },
       function() {
-        alert("请求失败处理"); //失败处理
+        console.log("请求失败处理"); //失败处理
       }
     );
-    _this.$post(_this.API.disease, { sex: "female" }).then(
+    _this.$post(_this.API.disease, params).then(
       function(res) {
-        _this.illAllData.data = res.diseases;
+        _this.disease = res.diseases;
       },
       function() {
-        alert("请求失败处理"); //失败处理
+        console.log("请求失败处理"); //失败处理
       }
     );
-    _this.$post(_this.API.SymTwelve, { sex: "female" }).then(
+    _this.$post(_this.API.SymTwelve, params).then(
       function(res) {
-        _this.symAllData.Twelve = res.body;
+        console.log(res);
+        _this.symAllData.Twelve = res;
       },
       function() {
-        alert("请求失败处理"); //失败处理
+        console.log("请求失败处理"); //失败处理
+      }
+    );
+    _this.$post(_this.API.SymHfWords, params).then(
+      function(res) {
+        _this.symAllData.HfWords = res;
+      },
+      function() {
+        console.log("请求失败处理"); //失败处理
       }
     );
 
-    _this.$post(_this.API.IllTwelve, { sex: "female" }).then(
+    _this.$post(_this.API.IllTwelve, params).then(
       function(res) {
-        _this.illAllData.Twelve = res.body;
+        _this.illAllData.Twelve = res;
       },
       function() {
-        alert("请求失败处理"); //失败处理
+        console.log("请求失败处理"); //失败处理
+      }
+    );
+    _this.$post(_this.API.IllHfWords, params).then(
+      function(res) {
+        _this.illAllData.HfWords = res;
+      },
+      function() {
+        console.log("请求失败处理"); //失败处理
       }
     );
   },
   mounted() {
-    this.sym();
+    // this.sym();
   },
   methods: {
     sym() {

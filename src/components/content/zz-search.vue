@@ -1,10 +1,10 @@
 <template>
     <div class="app-wrapper">
       <div class="search">
-        <input type="text" :placeholder="place" @input="searchInput" v-model="searchVal">
-        <div v-show="inputShow" class="app-content">
-          <ul>
-            <li v-for="(item, index) in searchData.data" :key="index" :id="item.id" :py="item.py">
+        <input type="text" :placeholder="place" v-model="searchVal">
+        <div v-show="searchVal" class="app-content">
+          <ul class="search-list">
+            <li v-for="(item, index) in getSearchData" :key="index" :id="item.id" >
               <router-link :to="{path:'/'}">{{item.name}}</router-link>
             </li>
           </ul>
@@ -12,9 +12,21 @@
       </div>
       <div class="app-ol">
         <p>近期使用(可选用)</p>
-        <ol>
-          <li v-for="(item, index) in searchData.Twelve" :key="index" :id="item.p_mkey||item.p_key">{{item.p_msym||item.p_ill}}</li>
+        <ol v-if="symAllData.Twelve">
+          <li v-for="(item, index) in symAllData.Twelve" :key="index" :id="item.p_mkey||item.p_key">{{item.p_msym||item.p_ill}}</li>
         </ol>
+        <div class="app-list-placeholder" v-else>
+          数据错误，请重新填写信息或联系管理员
+        </div>
+      </div>
+      <div class="app-ol">
+        <p>高频应用（可选用）</p>
+        <ol v-if="symAllData.HfWords.length">
+          <li v-for="(item, index) in symAllData.HfWords" :key="index" :id="item.key_no">{{item.cvocable}}</li>
+        </ol>
+        <div class="app-list-placeholder" v-else>
+          数据错误，请重新填写信息或联系管理员
+        </div>
       </div>
     </div>
 </template>
@@ -23,55 +35,44 @@
 export default {
   data() {
     return {
-      inputShow: false
+      inputShow: false,
+      searchVal: ""
     };
   },
-  filters: {
+  computed: {
     getSearchData() {
-      return;
+      const data = [];
+      this.searchData.map(obj => {
+        if (obj.py === this.searchVal.toUpperCase()) {
+          data.push(obj);
+        }
+      });
+      return data;
     }
   },
   props: {
-    searchData: Array,
-    place: ""
-  },
-  created() {},
-  mounted() {
-    //    setInterval(this.inputInterval(),100)
-  },
-  methods: {
-    searchInput(e) {
-      let text = e.target.value.toUpperCase();
-      $(".search-content li").hide();
-      if (text != "") {
-        this.inputShow = true;
-        for (var i = 0; i < $(".search-content li").length; i++) {
-          if (
-            $(".search-content li")
-              .eq(i)
-              .attr("py")
-              .indexOf(text) != -1
-          ) {
-            $(".search-content li")
-              .eq(i)
-              .show();
-          }
-        }
-      } else this.inputShow = false;
+    place: {
+      type: String,
+      default: "请输入【主症】的首拼或中文"
     },
-    inputInterval() {
-      //let text = $('.search input').attr('placeholder');
-      let index = 0;
-      let str = $(".search input").attr("placeholder");
-      if (index == str.length + 1) {
-        setTimeout(function() {
-          index = 0;
-        }, 1000);
-      }
-      $(".search input").attr("placeholder", str.substring(0, index++));
+    searchData: {
+      type: Array,
+      default: []
+    },
+    illAllData: {
+      type: Object,
+      default: {}
+    },
+    symAllData: {
+      type: Object,
+      default: {}
     }
   },
-  updated() {}
+  created() {},
+  mounted() {},
+  methods: {
+    updated() {}
+  }
 };
 </script>
 
@@ -138,7 +139,7 @@ export default {
         float: left;
         padding: 10px 15px;
         margin-right: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #ccc; /* no */
         border-radius: 20px;
         cursor: pointer;
 
@@ -153,6 +154,16 @@ export default {
         content: '';
         clear: both;
       }
+    }
+
+    .app-list-placeholder {
+      display: block;
+      border: 1px solid #ccc; /* no */
+      border-left: none;
+      border-right: none;
+      padding: 50px 15px;
+      text-align: center;
+      color: #aaa;
     }
   }
 }
