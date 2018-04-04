@@ -1,15 +1,15 @@
 <template>
     <div class="boyli-wrapper">
       <img class="boyli-bg" src="./../assets/images/enter.jpg">
-       <router-link :to="{path:'/checkSex'}">
+      <router-link :to="{path:'/checkSex'}">
         <div class="boyli-enter">
           <img src="./../assets/images/enter_btn.png" alt="">
         </div>
       </router-link>
-      <!--<div class="boyli-enter" @click="chageSex">-->
-          <!--<img src="./../assets/images/enter_btn.png" alt="">-->
-        <!--</div>-->
-      <!--<div class="test-font">{{$store.state.sex}}</div>-->
+      <!-- <div class="boyli-enter" @click="chageSex">
+          <img src="./../assets/images/enter_btn.png" alt="">
+        </div>
+      <div class="test-font">{{$store.state.sex}}</div> -->
     </div>
 </template>
 
