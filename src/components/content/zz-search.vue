@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       "inputShow": false,
-      "searchVal": '1'
+      "searchVal": ''
     }
   },
   props: {

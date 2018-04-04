@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="height: 100%">
     <v-header :headerData="headerData"></v-header>
-    <div class="app-wrapper his-wrapper">
+    <div v-show="!hisShow" class="app-wrapper his-wrapper">
       <div class="search">
         <input type="text">
       </div>
@@ -40,7 +40,6 @@ export default {
   },
   data () {
     return {
-      "host": this.HOST.data(),
       "hisData": '',
       "number": '',
       "hisShow": false,
@@ -57,11 +56,12 @@ export default {
     }
   },
   created () {
-    this.$post(this.API.gethistorybydate,{"usertype":"患者用户"}).then(function(res){
-      this.hisData = res.body;
-    },function(){
-      alert('请求失败处理');   //失败处理
-    });
+    this.$post(this.API.gethistorybydate,{"usertype":"患者用户"}).then(data => {
+      this.hisData = data
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
   },
   methods: {
     toHis (number) {
@@ -77,6 +77,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .his-wrapper
+  .search
+    margin 15px 0
+    input
+      line-height 30px
   ol
     li
       a
@@ -97,7 +101,7 @@ export default {
     li
       border none
       border-bottom 1px dotted #ccc
-      line-height 3rem
+      line-height 60px
       padding-left 10px
       &:first-child
         display none
