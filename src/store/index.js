@@ -6,21 +6,43 @@ vue.use(Vuex);
 const store = new Vuex.Store({
   // 定义状态
   state: {
-    sex: 'male',
-    upData: {
-      name: 'hao'
+    fetchLoading: false,
+    sexData: '',
+    sym:'',
+    sFlag: 0,
+    hisStep: {
+      ZZJB: {
+        id:[],
+        name:[]
+      },
+      TZ:{
+        bs: '',
+        tz: '',
+        sz: ''
+      },
+      ONSET: {
+        id:'',
+        name:''
+      },
+      AUXI: {
+        id:[],
+        name:[]
+      }
     },
     otherData: {}
   },
   mutations: {
     increment(state) {
       // 变更状态
-      state.sex = state.sex === 'male'
-        ? 'female'
-        : 'male';
+      //  state.sFlag = state.sFlag === 0
+      //    ? 1
+      //    : 0;
     },
     SET_DATA(state, data) { //改变数值
-      state.otherData = data;
+      state.sFlag = data;
+    },
+    SET_Loading(state, data) { //改变数值
+      state.fetchLoading = data;
     }
   },
   actions: {

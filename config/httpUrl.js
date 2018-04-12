@@ -5,6 +5,9 @@ const API_URL = {
   'SymTwelve': '/api/v1/SymTwelve',
   'SymHfWords': '/api/v1/SymHfWords',
   'IllTwelve': '/api/v1/IllTwelve',
-  'IllHfWords': '/api/v1/IllHfWords'
+  'IllHfWords': '/api/v1/IllHfWords',
+  'triagecondition': '/api/v1/triagecondition',
+  'onset': '/api/v1/onset',
+  'auxiliarys': '/api/v1/auxiliarys'
 };
 export default API_URL;

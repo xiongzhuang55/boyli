@@ -2,21 +2,21 @@
     <div class="sex-wrapper border-1px">
       <h2>请选择患者类别</h2>
       <div class="sex-select">
-        <router-link :to="{path:'/home',query:{'id':'male'}}">
-          <div>
-            <img src="../assets/images/male.png" alt="">
+        <router-link :to="{name:'Home'}">
+          <div @click="SEX('male')">
+            <img sex="male" src="../assets/images/male.png" alt="">
             <p>男性</p>
           </div>
         </router-link>
-        <router-link :to="{path:'/home',query:{'id':'female'}}">
-          <div>
-            <img src="../assets/images/female.png" alt="">
+        <router-link :to="{name:'Home'}">
+          <div @click="SEX('female')">
+            <img sex="male" src="../assets/images/female.png" alt="">
             <p>女性</p>
           </div>
         </router-link>
-        <router-link :to="{path:'/home',query:{'id':'child'}}">
-          <div>
-            <img src="../assets/images/child.png" alt="">
+        <router-link :to="{name:'Home'}">
+          <div @click="SEX('child')">
+            <img sex="male" src="../assets/images/child.png" alt="">
             <p>儿童</p>
           </div>
         </router-link>
@@ -25,7 +25,13 @@
 </template>
 
 <script>
-
+export default {
+  methods: {
+    SEX (data) {
+      this.$store.state.sexData = data;
+    }
+  }
+}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
@@ -38,7 +44,7 @@
   text-align center
   box-sizing border-box
   h2
-    font-size 32px
+    font-size 28px
   .sex-select
     display flex
     justify-content space-around
@@ -50,7 +56,8 @@
       img
         width 80%
       p
-        font-size 24px
+        font-size 16px
+        line-height 22px
 
 
 </style>

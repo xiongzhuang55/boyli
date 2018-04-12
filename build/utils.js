@@ -26,7 +26,7 @@ exports.cssLoaders = function (options) {
   const px2remLoader = {
     loader: 'px2rem-loader',
     options: {
-      remUnit: 75
+      remUnit: 50
     }
   };
   const postcssLoader = {
@@ -90,7 +90,7 @@ exports.createNotifierCallback = () => {
   const notifier = require('node-notifier')
 
   return (severity, errors) => {
-    if (severity !== 'error') 
+    if (severity !== 'error')
       return
 
     const error = errors[0]

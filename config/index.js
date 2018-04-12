@@ -5,6 +5,7 @@
 const path = require('path')
 function getIPAdress() {
   var interfaces = require('os').networkInterfaces();
+  console.log(interfaces)
   for (var devName in interfaces) {
     var iface = interfaces[devName];
     for (var i = 0; i < iface.length; i++) {
@@ -17,7 +18,6 @@ function getIPAdress() {
 }
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

@@ -12,6 +12,20 @@ Vue.config.productionTip = false;
 Vue.prototype.API = API;
 Vue.prototype.$get = fetch;
 Vue.prototype.$post = post;
+
+// const sex = sessionStorage.getItem('userSex');
+
+router.beforeEach((to, from, next) => {
+  if (to.path != '/'){
+      if (!store.state.sexData && to.path !== '/history'){
+        router.push('/')
+      }
+    next()
+  } else {
+    next()
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({el: '#app', router, store, components: {
     App

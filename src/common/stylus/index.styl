@@ -26,7 +26,7 @@ textarea
   left 0
   right 0
   bottom 0
-  width 694px
+  max-width 470px
   font-family '微软雅黑'
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
@@ -35,34 +35,59 @@ textarea
   overflow hidden
 @media screen and (max-width 768px)
   #app
-    width 100%
+    max-width 100%
     border none
+    .border-1px
+      height 100%
+      border none
+    .tab
+      height 64px
 .border-1px
     height 100%
-    border-left: 1px solid #2CA2B4
-    border-right: 1px solid #2CA2B4
+    border-left 1px solid #2CA2B4
+    border-right 1px solid #2CA2B4
 .backgroundColor
   background-color #2CA2B4
   color #fff
 .app-wrapper
   height 100%
+  background-color #f2f2f2
 .app-content
   position absolute
-  top 60px
+  top 44px
   left 1px
-  bottom 70px
+  bottom 55px
   right 1px
   background-color #f2f2f2
-  overflow-y scroll
+  overflow-y auto
   ol
   ul
     background-color #fff
     li
-      border-top 2px solid #ccc
+      border-top 1px solid #ddd
       a
         display block
-        line-height 60px
+        padding-left 52px
+        background-image url('./assets/images/check@2x.png')
+        background-repeat no-repeat
+        background-position 15px
+        background-size 25px 25px
+        line-height 45px
         background-color #fff
+        font-size 16px
+        cursor pointer
+        &.ActiveLink
+          background-image url('./assets/images/checked@2x.png')
+          background-repeat no-repeat
+          background-position 15px
+          background-size 30px 30px
         &:hover
           background-color #86CBD6
           color #fff
+  .app-list-placeholder
+    padding 30px 0rem
+    text-align center
+    font-weight normal
+    font-size 20px
+.height100
+  height 100%
