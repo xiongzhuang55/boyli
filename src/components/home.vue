@@ -6,8 +6,9 @@
 </template>
 
 <script>
-import vfooter from "../components/footer.vue"
+import vfooter from "./commonSub/footer.vue"
   export default {
+    name:'Home',
     data () {
       return {
         footerRoute: ''

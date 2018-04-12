@@ -19,8 +19,8 @@
 export default{
   data () {
     return {
-      "home": require("../assets/images/tab_over_home@2x.png"),
-      "his": require("../assets/images/tab_his@2x.png")
+      "home": require("../../assets/images/tab_over_home@2x.png"),
+      "his": require("../../assets/images/tab_his@2x.png")
     }
   },
   props: {
@@ -35,13 +35,12 @@ export default{
   },
   methods:{
     HOME () {
-      //console.log(this.$store.state.author)
-      this.home = require("../assets/images/tab_over_home@2x.png")
-      this.his = require("../assets/images/tab_his@2x.png")
+      this.home = require("../../assets/images/tab_over_home@2x.png")
+      this.his = require("../../assets/images/tab_his@2x.png")
     },
     HIS () {
-      this.his = require("../assets/images/tab_over_his@2x.png")
-      this.home = require("../assets/images/tab_home@2x.png")
+      this.his = require("../../assets/images/tab_over_his@2x.png")
+      this.home = require("../../assets/images/tab_home@2x.png")
     }
   }
 }
@@ -57,15 +56,16 @@ export default{
     display flex
     justify-content space-around
     align-items center
-    border-top 1px solid #ccc
-    height 70px
+    border-top 1px solid #eaeaea
+    height 54px
     font-size 14px
     background-color #fff
     .tab-item
+      flex 1
       text-align center
       & > a
         display block
-        line-height 20px
+        line-height 16px
         &.router-link-active
           color #2CA2B4 !important
 </style>

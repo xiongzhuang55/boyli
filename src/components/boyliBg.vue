@@ -45,40 +45,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus" rel="stylesheet/stylus">
-.test-font {
-  color: red;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  font-size: 50px;
-}
+.test-font
+  color red
+  position fixed
+  top 50%
+  left 50%
+  font-size 50px
 
-.boyli-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  text-align: center;
-  overflow: hidden;
 
-  .boyli-bg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+.boyli-wrapper
+  position absolute
+  top 0
+  left 0px
+  bottom 0px
+  right 0px
+  text-align center
+  overflow hidden
+  .boyli-bg
+    width 100%
+    height 100%
+  .boyli-enter
+    position absolute
+    bottom 20px
+    left 0px
+    right 0px
+    height 80px
+    img
+      width 150px
+      height 90px
 
-  .boyli-enter {
-    position: absolute;
-    bottom: 20px;
-    left: 0px;
-    right: 0px;
-    height: 100px;
 
-    img {
-      width: 193px;
-      height: 109px;
-    }
-  }
-}
+
 </style>

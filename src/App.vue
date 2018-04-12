@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading v-show="fetchLoading"></loading>
     <transition
       mode="out-in"
       :duration="{enter: 300, leave: 10}"
@@ -12,29 +13,32 @@
 </template>
 
 <script>
-import animate from "animate.css";
+  import Loading from './components/commonSub/loading';
+  import animate from 'animate.css';
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  components: {
+    Loading,
+  },
+  data(){
     return {
-      enterActiveClass: "",
-      leaveActiveClass: ""
+      fetchLoading: this.$store.state.fetchLoading,
+      enterActiveClass: '',
+      leaveActiveClass: ''
     };
   },
+  computed: {
 
-  watch: {
-    $route(to, from) {
-      const toDepth = to.path.split("/").length;
-      const fromDepth = from.path.split("/").length;
-      this.enterActiveClass =
-        toDepth < fromDepth ? "animated slideInLeft" : "animated slideInRight";
-      this.leaveActiveClass =
-        toDepth < fromDepth
-          ? "animated slideOutRight"
-          : "animated slideOutLeft";
-    }
   }
-};
+//  watch: {
+//    '$route' (to, from) {
+//      const toDepth = to.path.split('/').length;
+//      const fromDepth = from.path.split('/').length;
+//      this.enterActiveClass = toDepth < fromDepth ? 'animated slideInLeft' : 'animated slideInRight';
+//      this.leaveActiveClass = toDepth < fromDepth ? 'animated slideOutRight' : 'animated slideOutLeft';
+//    }
+//  }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
