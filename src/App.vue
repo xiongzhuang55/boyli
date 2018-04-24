@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading v-show="fetchLoading"></loading>
     <transition
       mode="out-in"
       :duration="{enter: 300, leave: 10}"
@@ -21,17 +22,12 @@ export default {
   },
   data(){
     return {
+      fetchLoading: this.$store.state.fetchLoading,
       enterActiveClass: '',
       leaveActiveClass: ''
     };
   },
   computed: {
-
-  },
-  created() {
-
-  },
-  mounted() {
 
   }
 //  watch: {
