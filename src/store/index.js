@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     sexData: '',
     sym:'',
     sFlag: 0,
+    hisStepShow: false,
     hisStep: {
       ZZJB: {
         id:[],
@@ -27,6 +28,10 @@ const store = new Vuex.Store({
       AUXI: {
         id:[],
         name:[]
+      },
+      DISEASE: {
+        id:[],
+        name:[]
       }
     },
     otherData: {}
@@ -41,22 +46,22 @@ const store = new Vuex.Store({
     SET_DATA(state, data) { //改变数值
       state.sFlag = data;
     },
-    SET_Loading(state, data) { //改变数值
-      state.fetchLoading = data;
+    SET_HIS(state, data) { //改变数值
+      state.hisStepShow = data;
     }
   },
   actions: {
-    getData(context, data) { //异步请求数据方法
-      post(API.bodysym, {
-        "sex": "female",
-        "age": "28岁"
-      }).then(data => {
-        context.commit('SET_DATA', data);
-      })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+    // getData(context, data) { //异步请求数据方法
+    //   post(API.bodysym, {
+    //     "sex": "female",
+    //     "age": "28岁"
+    //   }).then(data => {
+    //     context.commit('SET_DATA', data);
+    //   })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+    // }
   }
 })
 export default store

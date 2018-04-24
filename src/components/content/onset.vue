@@ -1,5 +1,6 @@
 <template>
     <div class="height100 animated" :class="{slideInRight: slideShow,slideInLeft: !slideShow}">
+      <my-loading :isShow="LOADING"></my-loading>
       <v-header :headerData="headerData"></v-header>
       <app-content :contentData="onsetData" :clickRoute="clickRoute"></app-content>
     </div>
@@ -15,7 +16,8 @@
     },
     data () {
       return {
-        "slideShow": false,
+        "LOADING": true,
+        "slideShow": true,
         "onsetData":[],
         "headerData": {
           "navLeftButton": true,
@@ -37,13 +39,16 @@
       let sex = this.$store.state.sexData;
       this.slideShow = (this.$route.params.back === 'false'?false:true);
       this.$post(this.API.onset,{"sex":sex,"symptoms":id}).then(data => {
-        for (var item of data){
-          item.check = 0;
-        }
-        this.onsetData = data
-      })
+          for (var item of data){
+            item.check = 0;
+          }
+          this.onsetData = data
+        })
         .catch(function(error) {
           console.log(error);
+        })
+        .finally(() => {
+          this.LOADING = false
         })
     },
     methods: {

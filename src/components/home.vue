@@ -1,6 +1,7 @@
 <template>
     <div class="border-1px">
       <router-view/>
+      <el-button v-show="$store.state.hisStepShow" id="stepBtn" type="primary" icon="el-icon-tickets" @click="openHis">过程记录</el-button>
       <v-footer :footerRoute="footerRoute"></v-footer>
     </div>
 </template>
@@ -22,11 +23,28 @@ import vfooter from "./commonSub/footer.vue"
     },
     mounted () {
 
+    },
+    methods: {
+      openHis() {
+        this.$notify({
+          title: '过程记录',
+          duration: 0,
+          dangerouslyUseHTMLString: true,
+          message: '<strong>这是 <i>HTML</i> 片段</strong>'
+        });
+      }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus" rel="stylesheet/stylus">
-
+<style lang="stylus" rel="stylesheet/stylus">
+#stepBtn
+  position absolute
+  bottom 54px
+  right 0px
+  z-index 9999
+  padding 5px
+  font-size 12px
+  background-color #2ca2b4
 </style>

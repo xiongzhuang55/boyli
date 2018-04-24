@@ -6,6 +6,7 @@
           <ul v-if="getSearchData.length">
             <li v-for="(item, index) in getSearchData" :key="index" :id="item.id">
               <a @click="changeState(item.id,item.name)">{{item.name}}</a>
+              <i class="info" v-if="item.info" @click="openInfo(item.name,item.info)"></i>
             </li>
           </ul>
           <div class="app-list-placeholder" v-else>
@@ -89,13 +90,23 @@ export default {
   methods: {
     changeState (id, name) {
       this.$store.state.hisStep.ZZJB.id.push(id);
-      this.$store.state.hisStep.ZZJB.name.push(name)
-      if (this.$store.state.sFlag==1){
+      this.$store.state.hisStep.ZZJB.name.push(name);
+      this.$store.commit('SET_HIS',true);
+      if (this.$store.state.sFlag == 1){
         alert('疾病进入');
         return false
       }else{
         this.$router.push('/home/tizheng');
       }
+    },
+    openInfo(name,info){
+      this.$alert(info, name,{
+        showConfirmButton:false,
+        closeOnClickModal:true,
+        callback: action => {
+
+        }
+      });
     }
   },
   updated () {

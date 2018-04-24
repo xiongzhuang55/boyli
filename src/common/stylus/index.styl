@@ -42,6 +42,8 @@ textarea
       border none
     .tab
       height 64px
+    #stepBtn
+      bottom 64px
 .border-1px
     height 100%
     border-left 1px solid #2CA2B4
@@ -64,23 +66,22 @@ textarea
   ul
     background-color #fff
     li
+      position relative
       border-top 1px solid #ddd
       a
         display block
         padding-left 52px
-        background-image url('./assets/images/check@2x.png')
-        background-repeat no-repeat
-        background-position 15px
-        background-size 25px 25px
+        bg-image('check@2x',15px,25px,25px)
+        //background-image url('./assets/images/check@2x.png')
+        //background-repeat no-repeat
+        //background-position 15px
+        //background-size 25px 25px
         line-height 45px
         background-color #fff
         font-size 16px
         cursor pointer
         &.ActiveLink
-          background-image url('./assets/images/checked@2x.png')
-          background-repeat no-repeat
-          background-position 15px
-          background-size 30px 30px
+          bg-image('checked@2x',15px,30px,30px)
         &:hover
           background-color #86CBD6
           color #fff
@@ -88,6 +89,17 @@ textarea
     padding 30px 0rem
     text-align center
     font-weight normal
-    font-size 20px
+    font-size 18px
 .height100
   height 100%
+.info
+  position absolute
+  top 0
+  right 0px
+  margin-right 10px
+  width 41px
+  height 100%
+  cursor pointer
+  bg-image('BookBig@2x',center,24px,21px)
+.el-message-box__title
+  text-align center

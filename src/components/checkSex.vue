@@ -2,19 +2,19 @@
     <div class="sex-wrapper border-1px">
       <h2>请选择患者类别</h2>
       <div class="sex-select">
-        <router-link :to="{name:'Home'}">
+        <router-link :to="{name:'home'}">
           <div @click="SEX('male')">
             <img sex="male" src="../assets/images/male.png" alt="">
             <p>男性</p>
           </div>
         </router-link>
-        <router-link :to="{name:'Home'}">
+        <router-link :to="{name:'home'}">
           <div @click="SEX('female')">
             <img sex="male" src="../assets/images/female.png" alt="">
             <p>女性</p>
           </div>
         </router-link>
-        <router-link :to="{name:'Home'}">
+        <router-link :to="{name:'home'}">
           <div @click="SEX('child')">
             <img sex="male" src="../assets/images/child.png" alt="">
             <p>儿童</p>

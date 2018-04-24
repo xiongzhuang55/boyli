@@ -19,25 +19,25 @@ export default {
     return {};
   },
   mounted() {
-    this.$post(this.API.gethistorybydate, {
-      check_dt: "tens",
-      user: "陈宝国",
-      usertype: "基层医生",
-      p_tel: "15988687954"
-    })
-      .then(data => {
-        //请求后存入值
-        this.$store.state.upData = data;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+//    this.$post(this.API.gethistorybydate, {
+//      check_dt: "tens",
+//      user: "陈宝国",
+//      usertype: "基层医生",
+//      p_tel: "15988687954"
+//    })
+//      .then(data => {
+//        //请求后存入值
+//        this.$store.state.upData = data;
+//      })
+//      .catch(function(error) {
+//        console.log(error);
+//      });
   },
   methods: {
-    chageSex() {
-      this.$store.commit("increment");
-      this.$store.dispatch("getData");
-    }
+//    chageSex() {
+//      this.$store.commit("increment");
+//      this.$store.dispatch("getData");
+//    }
   }
 };
 </script>

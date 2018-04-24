@@ -1,7 +1,8 @@
 <template>
     <div class="height100 animated" :class="{slideInRight: slideShow,slideInLeft: !slideShow}">
       <v-header :headerData="headerData"></v-header>
-      <app-content :contentData="auxiData" :clickRoute="clickRoute"></app-content>
+      <app-content :contentData="auxiData" :clickRoute="clickRoute" :searchShow="true" :loading="LOADING"></app-content>
+      <my-loading :isShow="LOADING"></my-loading>
     </div>
 </template>
 
@@ -15,6 +16,7 @@
     },
     data () {
       return {
+        "LOADING": true,
         "slideShow": true,
         "auxiData":[],
         "auxiNewData":{
@@ -31,7 +33,7 @@
           "navRightButtonFn": () => {
             this.$store.state.hisStep.AUXI.id = this.auxiNewData.id;
             this.$store.state.hisStep.AUXI.name = this.auxiNewData.name;
-            this.$router.push('/home/auxi')
+            this.$router.push('/home/disease')
           }
         },
         "clickRoute": (itemId,itemName) =>{
@@ -48,6 +50,7 @@
       }
     },
     created () {
+      this.slideShow = (this.$route.params.back === 'false'?false:true);
       let id = this.$store.state.hisStep.ZZJB.id;
       let sex = this.$store.state.sexData;
       let ONSETID= this.$store.state.hisStep.ONSET.id;
@@ -60,11 +63,14 @@
         .catch(function(error) {
           console.log(error);
         })
+        .finally(() => {
+          this.LOADING = false
+        })
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
 
 </style>

@@ -1,5 +1,6 @@
 <template>
     <div class="tuidao-wrapper animated sildeInRight">
+      <my-loading :isShow="LOADING"></my-loading>
       <div class="zz-jb">
         <div class="zz-header backgroundColor">
           <div class="zz-back">
@@ -24,6 +25,7 @@
   export default {
     data () {
       return {
+        "LOADING": true,
         "sex": this.$store.state.sexData,
         "place": '请输入【主症】的首拼或中文',
         "searchData": [],
@@ -46,46 +48,103 @@
       "zz-search": zzSearch
     },
     created () {
-      this.$store.commit('SET_DATA',0);
-      this.$post(this.API.bodysym,{sex:this.sex}).then(data => {
-        //this.symAllData.data = data
-        this.bodysym = data
-        this.searchData = data
-//        this.sym()
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-      this.$post(this.API.disease,{sex:this.sex}).then(data =>{
-        //this.illAllData.data = data.diseases;
-        this.disease = data.diseases;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-      this.$post(this.API.SymTwelve,{sex:this.sex}).then(data =>{
-        this.symAllData.Twelve = data;
-      }).catch(function(error) {
-        console.log(error);
-      });
-//      this.$post(this.API.SymHfWords,{sex:this.sex}).then(data =>{
-//          this.symAllData.HfWords = data;
-//        }).catch(function(error) {
-//        console.log(error);
-//      });
-      this.$post(this.API.IllTwelve,{sex:this.sex}).then(data =>{
-        this.illAllData.Twelve = data;
-      }).catch(function(error) {
-        console.log(error);
-      });
-//      this.$post(this.API.IllHfWords,{sex:this.sex}).then(data =>{
-//          this.illAllData.HfWords = data;
-//        }).catch(function(error) {
-//        console.log(error);
-//      });
+      var _this = this;
+      _this.$store.commit('SET_DATA',0);
+      function runAsync1(){
+        var p = new Promise(function (resolve, reject) {
+          _this.$post(_this.API.bodysym,{sex:_this.sex})
+            .then(data => {
+              resolve(data)
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        });
+        return p
+      }
+      function runAsync2(){
+        var p = new Promise(function (resolve, reject) {
+        return _this.$post(_this.API.disease,{sex:_this.sex})
+          .then(data =>{
+            resolve(data)
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+        });
+        return p
+      }
+      function runAsync3(){
+        var p = new Promise(function (resolve, reject) {
+          _this.$post(_this.API.SymTwelve,{sex:_this.sex})
+            .then(data =>{
+              resolve(data)
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        });
+        return p
+      }
+      function runAsync4(){
+        var p = new Promise(function (resolve, reject) {
+          _this.$post(_this.API.IllTwelve,{sex:_this.sex})
+            .then(data =>{
+              resolve(data)
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        });
+        return p
+      }
+      function runAsync5(){
+        var p = new Promise(function (resolve, reject) {
+          _this.$post(_this.API.SymHfWords,{sex:_this.sex})
+            .then(data =>{
+              resolve(data)
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        })
+        return p
+      }
+      function runAsync6(){
+        var p = new Promise(function (resolve, reject) {
+          _this.$post(_this.API.IllHfWords,{sex:_this.sex})
+            .then(data =>{
+              resolve(data)
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        });
+        return p
+      }
+      Promise
+        .all([runAsync1(), runAsync2(), runAsync3(), runAsync4()])
+        .then(function(results){
+          _this.LOADING = false;
+          _this.bodysym = results[0]
+          _this.searchData = results[0];
+          _this.disease = results[1].diseases;
+          _this.symAllData.Twelve = results[2];
+          _this.illAllData.Twelve = results[3];
+          _this.symAllData.HfWords = results[4];
+          _this.illAllData.HfWords = results[5];
+          console.log(results)
+        })
+        .catch(function(reason){
+          console.log(reason);
+        });
     },
     mounted () {
       this.sym();
+      const _this = this;
+      setTimeout(() => {
+        _this.LOADING = false;
+      }, 2000);
     },
     methods: {
       sym () {
@@ -94,6 +153,7 @@
         this.searchData = this.bodysym;
         this.AllData = this.symAllData;
         this.$store.commit('SET_DATA',0);
+        this.$store.commit('SET_HIS',false);
       },
       ill () {
         this.silder = true;

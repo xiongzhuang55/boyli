@@ -1,5 +1,6 @@
 <template>
     <div class="height100 animated" :class="{slideInRight: slideShow,slideInLeft: !slideShow}">
+      <my-loading :isShow="LOADING"></my-loading>
       <v-header :headerData="headerData"></v-header>
       <div class="app-wrapper">
         <div class="app-content">
@@ -34,6 +35,7 @@
     },
     data () {
       return {
+        "LOADING": true,
         "slideShow":true,
         "activeIndexBS": '',
         "activeIndexTZ": '',
@@ -51,12 +53,14 @@
     },
     created () {
       this.slideShow = (this.$route.params.back === 'false'?false:true);
-
       this.$get(this.API.triagecondition).then(data => {
         this.tzData = data
       })
         .catch(function(error) {
           console.log(error);
+        })
+        .finally(() => {
+          this.LOADING = false
         })
     },
     methods: {

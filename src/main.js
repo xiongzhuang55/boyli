@@ -2,13 +2,19 @@
 // standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import store from './store'
 import API from '../config/httpUrl'
 import {fetch, post} from './axios'
 import 'lib-flexible'
+import Loading from "./components/commonSub/loading";
 
+Vue.use(ElementUI);
+Vue.component("my-loading", Loading);
 Vue.config.productionTip = false;
+Vue.prototype.LOADING = false;
 Vue.prototype.API = API;
 Vue.prototype.$get = fetch;
 Vue.prototype.$post = post;
@@ -16,6 +22,9 @@ Vue.prototype.$post = post;
 // const sex = sessionStorage.getItem('userSex');
 
 router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
   if (to.path != '/'){
       if (!store.state.sexData && to.path !== '/history'){
         router.push('/')

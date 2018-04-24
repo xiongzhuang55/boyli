@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import BoyliBg from '@/components/boyliBg'
-import CheckSex from '@/components/checkSex'
 import Home from '@/components/home'
-import ZZJB from '@/components/content/zz-jb'
-import History from '@/components/content/history'
-import TiZheng from '@/components/content/tizheng'
-import Onset from '@/components/content/onset'
-import Auxi from '@/components/content/auxi'
 
 Vue.use(Router)
 
@@ -18,13 +12,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'BoyliBg',
+      name: 'boyliBg',
+      meta:{
+        title:"博医理自诊"
+      },
       component: BoyliBg
     },
     {
       path: '/checkSex',
-      name: 'CheckSex',
-      component: CheckSex
+      name: 'checkSex',
+      meta:{
+        title:"选择性别"
+      },
+      component: resolve => require(['@/components/checkSex'],resolve)
     },
     {
       path: '/home',
@@ -32,28 +32,67 @@ export default new Router({
       children:[
         {
           path: '/home',
-          component: ZZJB,
-          name: 'Home',
+          name: 'home',
+          meta:{
+            title:"主症疾病选择"
+          },
+          component: resolve => require(['@/components/content/zz-jb'],resolve)
         },
         {
           path: '/history',
-          name: 'History',
-          component: History
+          name: 'history',
+          meta:{
+            title:"历史记录"
+          },
+          component: resolve => require(['@/components/content/history'],resolve)
         },
         {
           path: '/home/tizheng',
           name: 'tizheng',
-          component: TiZheng
+          meta:{
+            title:"生命体征"
+          },
+          component: resolve => require(['@/components/content/tizheng'],resolve)
         },
         {
           path: '/home/onset',
           name: 'onset',
-          component: Onset
+          meta:{
+            title:"发病特点"
+          },
+          component: resolve => require(['@/components/content/onset'],resolve)
         },
         {
           path: '/home/auxi',
           name: 'auxi',
-          component: Auxi
+          meta:{
+            title:"辅助症状"
+          },
+          component: resolve => require(['@/components/content/auxi'],resolve)
+        },
+        {
+          path: '/home/disease',
+          name: 'disease',
+          meta: {
+            title: "疑似疾病"
+          },
+          component: resolve => require(['@/components/content/disease'], resolve)
+        },
+        {
+          path: '/home/disease/info',
+          name: 'info',
+          meta:{
+            title:"疑似疾病解释"
+          },
+          component: resolve => require(['@/components/commonSub/diseaseInfo'],resolve)
+        },
+        {
+          path: '/home/syndrome',
+          name: 'syndrome',
+          meta:{
+            title:"中医证型"
+          },
+          component: resolve => require(['@/components/content/syndrome'],resolve)
         }
       ]
     }

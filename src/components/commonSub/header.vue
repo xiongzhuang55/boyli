@@ -35,7 +35,7 @@ export default {
     top 0px
     left 0
     width 20%
-    height 100%
+    height 44px
     background:url('../../assets/images/back_arrow@2x.png') no-repeat left
     background-size 10px 12px
     padding-left 12px
@@ -45,7 +45,7 @@ export default {
     cursor pointer
   .nav-title
     width 60%
-    height 100%
+    height 44px
     margin-left 20%
     line-height 44px
     text-align center
@@ -54,7 +54,7 @@ export default {
     top 0px
     right 0
     width 20%
-    height 100%
+    height 44px
     text-align right
     line-height 44px
     background:url('../../assets/images/next_arrow@2x.png') no-repeat right
